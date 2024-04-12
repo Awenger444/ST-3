@@ -77,7 +77,7 @@ TEST_F(TimedDoorTest, LockingDoorForIsTimeOut) {
     door.unlock();
     timer.tregister(door.getTimeOut(), timerClient);
     std::this_thread::sleep_for(std::chrono::seconds(5));
-    EXPECT_ANY_THROW(door.lock());
+    EXPECT_ANY_THROW(door.throwState());
 }
 
 TEST_F(TimedDoorTest, LockingDoorForNoTimeOut) {
