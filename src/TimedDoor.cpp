@@ -28,14 +28,14 @@ void TimedDoor::lock() {
     if (!isOpened) {
         throw std::logic_error("This door is closed now!");
     }
-    isOpened = true;
+    isOpened = false;
 }
 
 void TimedDoor::unlock() {
     if (isOpened) {
         throw std::logic_error("This door is opened now!");
     }
-    isOpened = false;
+    isOpened = true;
 }
 
 void TimedDoor::throwState() {
