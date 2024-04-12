@@ -8,25 +8,26 @@
 #include "TimedDoor.h"
 
 class MockTimerClient : public TimerClient {
-public:
+ public:
     MOCK_METHOD(void, Timeout, (), (override));
 };
 
 class TimedDoorTest : public ::testing::Test {
-protected:
-    TimedDoor door;
-    MockTimerClient* timerClient{};
-    Timer timer;
-
-    TimedDoorTest() : door(4), timer() {}
-
+ protected:
     void SetUp() override {
-        timer.tregister(door.getTimeOut(), timerClient);
+        timerClient = new MockTimerClient();
     }
 
     void TearDown() override {
-        testing::Mock::VerifyAndClearExpectations(&timerClient);
+        delete timerClient;
     }
+
+    TimedDoor door;
+    Timer timer;
+    MockTimerClient* timerClient{};
+
+ public:
+    TimedDoorTest() : door(5), timer() {}
 };
 
 TEST_F(TimedDoorTest, IsDoorClosed) {

@@ -1,4 +1,4 @@
-// Copyraght 2024 Chuvashov Andrey
+// Copyright 2024 Chuvashov Andrey
 
 #include "TimedDoor.h"
 #include <thread> // NOLINT [build/c++11]
